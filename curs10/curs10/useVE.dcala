@@ -1,0 +1,20 @@
+package curs10
+
+import com.cra.figaro.language.{Flip, Select}
+import com.cra.figaro.library.compound.{CPD,^^}
+import com.cra.figaro.algorithm.factored.VariableElimination
+
+object ExBayesRule {
+    val elem1 = Select(0.5 -> 2, 0.2 -> 5, 0.3 -> 8)
+    
+
+    def main(args: Array[String]) {
+        val algorithm1 = VariableElimination(elem1)
+        println(algorithm1.probability(elem1, 5))
+        println(algorithm1.probability(elem1, (i: Int) => i > 2))
+        println(algorithm1.distribution(elem1).toList)
+        println(algorithm1.mean(elem1))
+        println(algorithm1.expectation(elem1, (i: Int) => i)
+        println(algorithm1.expectation(elem1, (i: Int) => i x i)
+    }
+}
