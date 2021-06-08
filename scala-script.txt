@@ -1,0 +1,148 @@
+*** instalare
+
+https://www.scala-lang.org/download/
+
+*** scala SBT
+
+https://www.scala-sbt.org/
+
+1. exemplu de functie simpla:
+
+def square(x: Double) = x * x
+
+test:
+
+2. apel prin n ume (call-by-name)
+
+def constOne(x: Int, y: => Int) = 1
+
+test:
+
+def loop: Int = loop
+
+constOne(2, loop)
+
+3. expresie conditionala
+
+def abs(x: Double) = if (x >= 0) x else x
+
+test:
+abs(3.3)
+
+4. functii incuibarite
+
+ open sqrt.scala
+ 
+ :load sqrt.scala
+
+test:
+sqrt(2)
+
+improve(2, 5)
+
+5. functii "First Class"
+
+A function in Scala is a “first-class value”.
+
+def sum(f: Int => Int, a: Int, b: Int): Int =
+if (a > b) 0 else f(a) + sum(f, a + 1, b)
+
+test:
+def sumSquares(a: Int, b: Int): Int = sum(square, a, b)
+
+6. functii anonime
+
+def sumSquares(a: Int, b: Int): Int = sum((x: Int) => x * x, a, b)
+
+test:
+sumSquares(1,2)
+sumSquares(1,3)
+sumSquares(1,4)
+
+7. Currying
+
+open sum.scala
+:load sum.scala
+
+test:
+
+sum((x) => x+x)
+sum((x) => x+x)(2,3)
+
+def add(x:Int, y:Double) : String = x.toString() + y.toString()
+
+tests:
+
+add(2,3.4)
+
+add(_, 3.4)
+
+add(2, _)
+
+add.curried : Int => (Double => String)
+
+8. clase
+
+open rational.scala
+
+:load rational.scala
+
+var x = new Rational(0, 1)
+
+9. traits
+Traits are abstract classes that are meant to be added to some other class.
+
+open traits.scala
+
+:load traits.scala
+
+test:
+var s = new EmptySet
+
+s.contains(2)
+
+10. case classes
+
+
+open case-c lasses.scala
+
+:load
+
+test:
+
+def e = new Sum(Number(1), Number(2))
+
+eval(e)
+
+11. map
+
+open map.scala
+
+:load map.scala
+
+scaleList(l, 3)
+
+scaleList(l, 3)
+
+scaleList2(l, 3)
+
+
+12. foreach
+
+l foreach (x => println(x*3))
+
+
+13. filter
+
+l filter (x => x % 2 == 1)
+
+
+14. foldleft
+
+def sum(xs: List[Int]) = (xs foldLeft 0) {(x, y) => x + y}
+def product(xs: List[Int]) = (xs foldLeft 1) {(x, y) => x * y}
+
+sum(l)
+
+product(l)
+
